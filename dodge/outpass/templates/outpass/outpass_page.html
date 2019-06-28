@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Hi! {{ user }}<br>
+<div>
+<form action="{% url 'warden' %}" method="post">
+    {% csrf_token %}
+ <!--   destination:
+    <input type="text" name="dest" id="destination"><br>
+    vehicle:
+    <input type="text" name="vehicle" id="vehicle"><br>
+    return time:
+    <input type="time" name="returnTime" id="returnTime"><br><br>
+    <input type="submit" value="submit">    -->
+    {{ form.as_p }}
+    <input type="submit" value="submit">
+</form>
+</div>
+</body>
+</html>

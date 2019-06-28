@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{ ind.destination }}<br>
+{{ ind.vehicle }}<br>
+{{ ind.time }}
+<form action="{% url 'outpass' user.id %}" method="post">
+    {% csrf_token %}
+    <input type="radio" id="yes" name="allow" value="Confirm Outpass" checked/>Confirm outpass<br>
+    <input type="radio" id="no" name="allow" value="Decline Outpass" />Decline outpass<br>
+    <input type="submit" value="Okay">
+</form>
+</body>
+</html>
