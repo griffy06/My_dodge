@@ -2,19 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>login page</title>
+    <title>Login page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Cookie|Lobster|Satisfy&display=swap" rel="stylesheet">
 </head>
 <body>
+<nav class="navbar navbar-expand-xl navbar-dark" style="background-color: black">
 
-
+  <a class="navbar-brand" href="{% url 'main' %}" style="font-family: 'Lobster', cursive;">Dodge</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'main' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">Login</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'register' %}">Register</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'about' %}">About</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container" style="margin-top:5%;">
 <form action="" method="post">
-    {%  csrf_token %}
-    username:
-    <input type="text" name="username" id="username"/><br><br>
-    password:
-    <input type="password" name="password" id="password"/>
-    <input type="submit" value="Submit">
+    {% csrf_token %}
+  <div class="form-group col-md-6">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+
+  </div>
+  <div class="form-group col-md-6">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+  </div>
+    <br><br>&nbsp&nbsp&nbsp
+  <button type="submit" class="btn btn-info">Login</button>
 </form>
+</div>
+
+
 
 
 </body>

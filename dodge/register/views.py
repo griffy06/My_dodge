@@ -17,9 +17,9 @@ class UserFormView(View):
         form = self.form_class(request.POST)
 
         if form.is_valid():
-            username = request.POST['username']
-            password = request.POST['password']
-            email = request.POST['email']
-            User.objects.create_user(username,email,password)
-            Profile.objects.create(username=username,time="00:00",vehicle="None",destination="None",permitted=False)
+         username = request.POST.get('username')
+         password = request.POST.get('password')
+         email = request.POST.get('email')
+         User.objects.create_user(username=username,email=email,password=password)
+         Profile.objects.create(username=username,time="00:00",vehicle="None",destination="None",permitted=False)
         return redirect('main')
