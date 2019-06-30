@@ -3,9 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Cookie|Lobster|Satisfy&display=swap" rel="stylesheet">
+    <style>
+        #kl {
+            text-decoration: underline;
+            color: midnightblue;
+        }
+
+    </style>
 </head>
 <body>
-<a href="{% url 'login' %}">login</a><br>
-<a href="{% url 'register' %}">register</a><br>
+<nav class="navbar navbar-expand-xl navbar-dark" style="background-color: black">
+
+  <a class="navbar-brand" href="{% url 'main' %}" style="font-family: 'Lobster', cursive;">Dodge</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'main' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">Login</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'register' %}">Register</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'about' %}">About</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="jumbotron" style="text-align: center">
+  <h1 class="lead">Hey there,</h1>
+    <p class="display-4">Welcome to <span class="display-4" style="font-family: 'Lobster', cursive;"> Dodge !</span></p>
+  <hr class="my-4">
+  <p>Not registered yet?</p>
+  <a class="btn btn-success btn-md" href="{% url 'register' %}" role="button">Register Now</a>
+</div>
+<div class="container" style="text-align: center">
+Need an outpass? &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<a class="btn btn-info btn-lg" href="{% url 'login' %}" role="button">Login</a>
+</div>
+<br>
+<div style="margin-left: 93%;"><a id="kl" href="{% url 'about' %}">About us</a> </div>
 </body>
 </html>
