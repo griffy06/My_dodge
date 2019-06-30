@@ -1,10 +1,51 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>About us</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Cookie|Lobster|Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}" />
+
 </head>
 <body>
-This is about us
+<nav class="navbar navbar-expand-xl navbar-dark" style="background-color: black">
+
+  <a class="navbar-brand" href="{% url 'main' %}" style="font-family: 'Lobster', cursive;">Dodge</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'main' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">Login</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'register' %}">Register</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'about' %}">About</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<img src="{% static 'main/images/icon2.jpg' %}" style="height: 200px; width: 300px;margin-top: 70px;margin-left: 70px" class="float-left">
+<div class="jumbotron" style="background-color: transparent">
+
+
+<div class="display-4" align="center"><h1>About us</h1></div><br>
+    <div  class="container">
+    <p class="lead" align="center"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Hello user!<br>
+&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp In a hurry and do not want to write that long silly application <br>&nbsp&nbsp&nbsp &nbsp&nbsp&nbspfor getting a little piece of paper, the so-called 'Outpass'?
+<br>
+&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp Well then you are at the perfect place. <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbspGet your outpass with a mouse click ! </p>
+  <hr class="my-4">
+
+
+</div>
+</div>
 </body>
-</html>

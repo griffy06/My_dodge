@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Login page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Cookie|Lobster|Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}" />
 </head>
 <body>
 <nav class="navbar navbar-expand-xl navbar-dark" style="background-color: black">
@@ -35,7 +37,7 @@
     {% csrf_token %}
   <div class="form-group col-md-6">
     <label for="username">Username</label>
-    <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+    <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" >
 
   </div>
   <div class="form-group col-md-6">
