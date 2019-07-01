@@ -21,5 +21,5 @@ class UserFormView(View):
          password = request.POST.get('password')
          email = request.POST.get('email')
          User.objects.create_user(username=username,email=email,password=password)
-         Profile.objects.create(username=username,time="00:00",vehicle="None",destination="None",permitted=False)
+         Profile.objects.create(username=username,permitted="no")
         return redirect('main')

@@ -18,9 +18,12 @@ class UserFormView(View):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
-        if user is not None:
+        if username=="warden":
+            return redirect('warden')
+        else:
+          if user is not None:
                 login(request,user)
                 return redirect('outpass', user.id)
-        else:
+          else:
                 return render(request, self.template_name, {'form':form})
 

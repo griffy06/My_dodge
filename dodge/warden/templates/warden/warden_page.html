@@ -2,17 +2,41 @@
 {% load staticfiles %}
 <html lang="en">
 <head>
+    <style>
+        #pp:hover{
+            background-color: lightgray;
+        }
+    </style>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}" />
+    <title>Outpass requests</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Cookie|Lobster|Satisfy&display=swap" rel="stylesheet">
+    <!--<link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}" />-->
 </head>
 <body>
+<nav class="navbar navbar-expand-xl navbar-dark" style="background-color: black">
+
+  <span class="navbar-brand" style="font-family: 'Lobster', cursive;">Dodge</span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+    </ul>
+      <span class="navbar-text"><a href="{% url 'main' %}">Logout</a> </span>
+  </div>
+</nav>
 {% if all_students %}
+    <div class="container" style="margin-top: 40px;text-align: ceneter"><h5>Following are the outpass requests:<br></h5></div>
+<div class="list-group" style="margin-top: 60px; margin-left: 80px;margin-right: 500px">
 {% for student in all_students %}
-    <a href="{% url 'index' student.id %}">{{ student }}</a>
+    <a href="{% url 'index' student.id %}" class="list-group-item list-group-item-action" id="pp">{{ student }}</a>
 {% endfor %}
+</div>
+
 {% else %}
-no outpass requests
+<div class="container" style="text-align: center;margin-top:40px;"><h2>No outpass requests!</h2></div>
 {% endif %}
 </body>
 </html>

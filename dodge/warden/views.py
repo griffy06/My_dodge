@@ -8,9 +8,13 @@ def warden(request):
     if request.method == "POST":
         student = Student()
         student.username = request.user
-        student.destination = request.POST['destination']
-        student.vehicle = request.POST['vehicle']
-        student.time = request.POST['time']
+        student.destination = request.POST.get('destination')
+        student.vehicle = request.POST.get('vehicle')
+        student.present_time = request.POST.get('present_time')
+        student.arrival_time = request.POST.get('arrival_time')
+        student.departure_time = request.POST.get('departure_time')
+        student.date = request.POST.get('date')
+        student.full_name = request.POST.get('full_name')
         student.save()
         return HttpResponse("Outpass requested")
     else:
