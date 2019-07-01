@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from warden.models import Student
 from django.http import HttpResponse
 from .models import Profile
+from .render import Render
+from django.views.generic import View
 
 
 def back(request,user_id):
@@ -48,3 +50,15 @@ def outpass(request,user_id):
             permit.permitted = "declined"
             permit.save()
             return redirect('warden')
+
+
+
+def pdf(request,user_id):
+    user = User.objects.get(pk=user_id)
+    permit = Profile.objects.get(username=user.username)
+    params = {
+        'user' : user,
+        'permit' : permit,
+        'request': request,
+    }
+    return Render.render('outpass/pdf.html', params)
