@@ -1,7 +1,8 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
 from .models import Student
 from django.contrib.auth.models import User
+from outpass.models import Profile
 
 
 def warden(request):
@@ -16,7 +17,11 @@ def warden(request):
         student.date = request.POST.get('date')
         student.full_name = request.POST.get('full_name')
         student.save()
-        return HttpResponse("Outpass requested")
+        permit = Profile.objects.get(username=student.username)
+        permit.permitted="requested"
+        permit.save()
+        user = User.objects.get(username=student.username)
+        return redirect('outpass',user.id)
     else:
         all_students = Student.objects.all()
         return render(request,'warden/warden_page.html',{'all_students': all_students})

@@ -1,11 +1,17 @@
 from django.shortcuts import render, get_object_or_404,redirect
-from django.views.generic import View
 from .forms import OutpassForm
 from django.contrib.auth.models import User
 from warden.models import Student
 from django.http import HttpResponse
 from .models import Profile
 
+
+def back(request,user_id):
+    user1 = User.objects.get(pk=user_id)
+    user = Profile.objects.get(username=user1.username)
+    user.permitted="no"
+    user.save()
+    return redirect('outpass',user_id)
 
 def outpass(request,user_id):
     if request.method=="GET":
@@ -15,9 +21,11 @@ def outpass(request,user_id):
        if permit.permitted=="no":
           return render(request,'outpass/outpass_page.html',{'form':form, 'user': user})
        elif permit.permitted=="declined":
-           return HttpResponse("Not granted!")
+           return render(request,'outpass/declined.html',{'user':user,'permit':permit})
        elif permit.permitted=="granted":
-           return HttpResponse("Granted!")
+           return render(request,'outpass/granted.html',{'user':user,'permit':permit})
+       elif permit.permitted=="requested":
+           return render(request,'outpass/requested.html',{'user':user,'permit':permit})
 
     else:
         user=User.objects.get(pk=user_id)
@@ -32,7 +40,6 @@ def outpass(request,user_id):
         permit.date=student.date
         permit.save()
         student.delete()
-        hey = request.POST.get('allow')
         if request.POST.get('allow')=="confirm":
             permit.permitted = "granted"
             permit.save()
